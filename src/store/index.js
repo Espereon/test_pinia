@@ -37,5 +37,18 @@ export const useFetcherStore = defineStore("data", {
         console.error(err);
       }
     },
+    async addItem(newData) {
+      try {
+        const response = await axios.post(
+          "https://13c7dcadda889182.mokky.dev/items",
+          newData
+        );
+        if (response.status === 201 || response.status === 200) {
+          this.fetchItems();
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    },
   },
 });
